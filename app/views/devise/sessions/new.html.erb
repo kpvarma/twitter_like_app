@@ -1,0 +1,37 @@
+<div class="container" align="center">
+	<div class="row">
+		<div class="well" style='max-width:400px;'>
+			<h2 class="form-heading">Sign in</h2>
+			
+			<%if flash[:alert] %>
+				<%= content_tag(:div, flash[:alert], :class=>"alert alert-error") %>
+			<% end %>
+			
+			<%= simple_form_for(resource, :as => resource_name,  :html=>{ :class=>"form-horizontal" }, :url => session_path(resource_name)) do |f| %>
+	  		
+				<%= f.input :login, :placeholder => 'eg: joeblack', :hint => 'Enter email or username', :required => true %>
+				<%= f.input :password, :required => true %>
+				
+				<% if devise_mapping.rememberable? -%>
+					<%= f.input :remember_me, :as => :boolean, :label => 'Remember Me', :required => false %>
+				<% end -%>
+				
+			  <%= f.submit "Sign In", :class=>"float-right btn btn-primary",
+										 "data-loading-text"=>"Signing in ..." %>
+			<% end %>
+			
+			<div class="cl-10"></div>
+			
+		</div>
+	</div>
+</div>
+
+<div class="container" align="center">
+	<div class="row" align="center">
+		<div class="well" style='max-width:400px;margin-top:0px;'>
+			<h4 class="form-heading">Don't have an account?'</h4>
+			<%= render "devise/shared/links" %>
+		</div>
+	</div>
+</div>
+

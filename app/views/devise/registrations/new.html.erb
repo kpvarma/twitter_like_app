@@ -1,0 +1,39 @@
+<div class="container" align="center">
+	<div class="row">
+		<div class="well" style='max-width:400px;'>
+			<h2 class="form-heading">Sign up</h2>
+			<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class=>"form-horizontal" }) do |f| %>
+				
+				<% if f.error_notification %>
+			    <div class="alert alert-error fade in">
+			      <a class="close" data-dismiss="alert" href="#">&times;</a>
+						Please review the problems below:
+						<div class="cl"></div>
+			    </div>
+			  <% end %>
+				
+				<%= f.input :name, :placeholder => 'eg: Krishnaprasad Varma', :hint => '3 - 56 characters - [a-z, A-Z]', :required => true %>
+				<%= f.input :username, :placeholder => 'eg: kpvarma', :hint => '4 - 56 characters [a-z, A-Z, 1-9]', :required => true %>
+				<%= f.input :email, :placeholder => 'eg: user@domain.com', :required => true %>
+				<%= f.input :password, :hint => '6 to 20 characters among - a-z, A-Z, 1-9, !, @, #, $, &, *, _ and -', :required => true %>
+				<%= f.input :password_confirmation, :placeholder => "Please re-enter the password.", :label => "Confirm Password", :required => true %>
+				
+				<%= f.submit "Sign up", :class=>"float-right btn btn-primary",
+										 "data-loading-text"=>"Loading ..." %>
+			<% end %>
+			
+			<div class="cl-10"></div>
+			
+		</div>
+	</div>
+</div>
+
+<div class="container" align="center">
+	<div class="row" align="center">
+		<div class="well" style='max-width:400px;margin-top:0px;'>
+			<h4 class="form-heading">Already having an account?'</h4>
+			<%= render "devise/shared/links" %>
+		</div>
+	</div>
+</div>
+

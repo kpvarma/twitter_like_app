@@ -1,0 +1,49 @@
+
+body {margin-top:30px;}
+
+/*social icons*/
+ul#social { list-style: none outside none; margin: 0; }
+#social a { display: block; float: left; height: 32px; margin: 0 9px 9px 0; width: 32px; }
+#social a img { border: medium none; }
+
+footer {background-color:#FAFAFA;border-top:solid 1px #999;margin-top:-10px;}
+
+.navbar-inverse {
+	color: #0a3c79;
+}
+.navbar-inverse .navbar-inner {
+	background-color: #0a3c79;
+	background-image: -moz-linear-gradient(top,#083061,#0e53a8);
+	background-image: -webkit-gradient(linear,0 0,0 100%,from(#083061),to(#0e53a8));
+	background-image: -webkit-linear-gradient(top,#083061,#0e53a8);
+	background-image: -o-linear-gradient(top,#083061,#0e53a8);
+	background-image: linear-gradient(to bottom,#083061,#0e53a8);
+	background-repeat: repeat-x;
+	border-color: #06254a;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#083061',endColorstr='#0e53a8',GradientType=0);
+}
+
+/* Twitter Background Classes */
+.page-bckgrnd {-webkit-background-size:cover;
+										-moz-background-size:cover;
+										background-size:cover;
+										min-height:640px;
+										background-repeat:no-repeat;
+										background-color:#000;}
+.bckgrnd-1 {background-image: url("/assets/backgrounds/twitter-bck-img1.jpg");}
+.bckgrnd-2 {background-image: url("/assets/backgrounds/twitter-bck-img2.jpg");}
+.bckgrnd-3 {background-image: url("/assets/backgrounds/twitter-bck-img3.jpg");}
+.bckgrnd-4 {background-image: url("/assets/backgrounds/twitter-bck-img4.jpg");}
+.bckgrnd-5 {background-image: url("/assets/backgrounds/twitter-bck-img5.jpg");}
+.bckgrnd-6 {background-image: url("/assets/backgrounds/twitter-bck-img6.jpg");}
+.bckgrnd-7 {background-image: url("/assets/backgrounds/twitter-bck-img7.jpg");}
+.bckgrnd-8 {background-image: url("/assets/backgrounds/twitter-bck-img8.jpg");}
+.bckgrnd-9 {background-image: url("/assets/backgrounds/twitter-bck-img9.jpg");}
+.bckgrnd-10 {background-image: url("/assets/backgrounds/twitter-bck-img10.jpg");}
+
+/* Form Heading */
+
+.form-heading {text-align: left;margin: 0px 0px 20px 0px;color:#0E53A8;}
+
+/* Overriding simple form css */
+.form-horizontal .control-group {margin-bottom:10px;}

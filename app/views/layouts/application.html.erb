@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+  	<title><%= @title || "Twitter Like Rails Appplication - a learning app" %></title>
+
+		<%= render :partial=>"/layouts/common/meta_tags" %>
+		<%= render :partial=>"/layouts/common/stylesheets" %>
+	
+		<%= csrf_meta_tags %>
+	
+	</head>
+	<body>
+		
+		<div class="header-block clearfix">
+			<%= render :partial=>"/layouts/common/header" %>
+		</div>
+		
+		<div class="page-bckgrnd bckgrnd-<%= (1..9).to_a.sample.to_s %> padding-40">
+			
+			<% if notice %>
+				<div class="container" align="center">
+					<div class="row" align="center">
+						<div style=''>
+							<div class="alert alert-success fade in" data-alert="alert">
+				        <a class="close" data-dismiss='alert' href="#">×</a>
+				        <p><%= notice %></p>
+				      </div>
+						</div>
+					</div>
+				</div>
+	    <% end %>
+	
+			<%= yield %>
+		</div>
+		
+		<%= render :partial=>"/layouts/common/footer" %>
+		<%= render :partial=>"/layouts/common/javascripts" %>
+	
+	</body>
+</html>

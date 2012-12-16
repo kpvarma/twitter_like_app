@@ -1,0 +1,35 @@
+<div class="container" align="center">
+	<div class="row">
+		<div class="well" style='max-width:400px;'>
+			<h2 class="form-heading">Resend confirmation instructions</h2>
+			<%= simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :class=>"form-horizontal", :method => :post }) do |f| %>
+				
+				<% if f.error_notification %>
+			    <div class="alert alert-error fade in">
+			      <a class="close" data-dismiss="alert" href="#">&times;</a>
+						Please review the problems below:
+						<div class="cl"></div>
+			    </div>
+			  <% end %>
+
+			  <%= f.input :login, :placeholder => 'eg: kpvarma', :required => true %>
+				<%#= f.input :email, :placeholder => 'eg: user@domain.com', :required => true %>
+
+				<%= f.submit "Resend confirmation instructions", :class=>"float-right btn btn-primary",
+										 "data-loading-text"=>"Loading ..." %>
+			<% end %>
+			
+			<div class="cl-10"></div>
+			
+		</div>
+	</div>
+</div>
+
+<div class="container" align="center">
+	<div class="row" align="center">
+		<div class="well" style='max-width:400px;margin-top:0px;'>
+			<h4 class="form-heading">Don't have an account?'</h4>
+			<%= render "devise/shared/links" %>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,84 @@
+<div class="container" align="center">
+	<div class="row">
+		<div class="well" style='max-width:400px;'>
+			<h2 class="form-heading">Change your password</h2>
+			<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :class=>"form-horizontal", :method => :put }) do |f| %>
+				
+				<% if f.error_notification %>
+			    <div class="alert alert-error fade in">
+			      <a class="close" data-dismiss="alert" href="#">&times;</a>
+						Please review the problems below:
+						<%= resource.errors.full_messages.to_sentence %>
+						<div class="cl"></div>
+			    </div>
+			  <% end %>
+				
+				<%= f.hidden_field :reset_password_token %>
+				<%= f.input :login, :placeholder => 'eg: kpvarma', :required => true %>
+				<%= f.input :password, :required => true %>
+				<%= f.input :password_confirmation, :required => true %>
+				
+			  <%= f.submit "Change my password", :class=>"float-right btn btn-primary",
+										 "data-loading-text"=>"Loading ..." %>
+			<% end %>
+			
+			<div class="cl-10"></div>
+			
+		</div>
+	</div>
+</div>
+
+<div class="container" align="center">
+	<div class="row" align="center">
+		<div class="well" style='max-width:400px;margin-top:0px;'>
+			<h4 class="form-heading">Don't have an account?'</h4>
+			<%= render "devise/shared/links" %>
+		</div>
+	</div>
+</div>
+
+
+###
+
+<div class="container" align="center">
+	<div class="row">
+		<div class="well" style='max-width:400px;margin-top:60px;'>
+			<h2 class="form-heading">Change your password</h2>
+			<%= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :class=>"form-horizontal", :method => :put }) do |f| %>
+				
+				<%= devise_error_messages! %>
+				<%= f.hidden_field :reset_password_token %>
+				
+			  <div class="form-inputs margin-bottom-10">
+					<%= f.label :login %>
+			  	<%= f.email_field :login %>
+				</div>
+				
+				<div class="form-inputs margin-bottom-10">
+					<%= f.label :password, "New password" %>
+			  	<%= f.password_field :password %>
+				</div>
+
+				<div class="form-inputs margin-bottom-10">
+			  	<%= f.label :password_confirmation, "Confirm new password" %>
+			  	<%= f.password_field :password_confirmation %>
+				</div>
+
+				<%= f.submit "Change my password", :class=>"float-right btn btn-primary margin-right-10",
+										 "data-loading-text"=>"Signing in ..." %>
+			<% end %>
+			
+			<div class="cl-10"></div>
+			
+		</div>
+	</div>
+</div>
+
+<div class="container" align="center">
+	<div class="row" align="center">
+		<div class="well" style='max-width:400px;margin-top:0px;'>
+			<h4 class="form-heading">Don't have an account?'</h4>
+			<%= render "devise/shared/links" %>
+		</div>
+	</div>
+</div>
