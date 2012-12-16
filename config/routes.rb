@@ -1,8 +1,12 @@
 Twitter::Application.routes.draw do
   
+  root :to => 'welcome#home'
+  
   devise_for :users
 
-  root :to => 'welcome#home'
+  resources :tweets, :except=>[:show, :index]
+
+  match ':username' => "tweets#index", :as => :user_tweets
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

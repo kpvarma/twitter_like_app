@@ -12,13 +12,13 @@
          </a>
          <div class="nav-collapse collapse pull-right">
            <ul class="nav">
-             <li class="active"><%= link_to "Home", root_path %></li>
+             <li class="<%= @header_nav == "Home" ? "active" : "" %>"><%= link_to "Home", root_path %></li>
 							<% if signed_in? %>
-             		<li><a href="#welcome">Welcome <%= current_user.name %>! </a></li>
+             		<li class="<%= @header_nav == "Tweets" ? "active" : "" %>"><%= link_to current_user.name, user_tweets_path(:username=>current_user.username)  %></li>
              		<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
            		<% else %>
-								<li><%= link_to "Sign up", new_user_registration_path %></li>
-								<li><%= link_to "Sign in", new_user_session_path %></li>
+								<li class="<%= @header_nav == "Sign Up" ? "active" : "" %>"><%= link_to "Sign up", new_user_registration_path %></li>
+								<li class="<%= @header_nav == "Sign In" ? "active" : "" %>"><%= link_to "Sign in", new_user_session_path %></li>
            		<% end %>
 					</ul>
          </div><!--/.nav-collapse -->

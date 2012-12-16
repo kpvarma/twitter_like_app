@@ -1,24 +1,17 @@
 <div class="container" align="center">
 	<div class="row" align="center">
 		<div class="well" style='max-width:800px;margin-top:0px;'>
-			
 			<% if signed_in? %>
-				<h4 class="form-heading">Welcome <%= current_user.name %>!</h4>
+				<h4 class="form-heading">Welcome <%= @user.name %>!</h4>
 			<% else %>
-				<h4 class="form-heading float-left">Welcome Guest!</h4>
-				<div class="float-right">
-					<%= link_to "Sign up", new_user_registration_path, :class=>"btn btn-danger float-right" %>
-					<%= link_to "Sign in", new_user_session_path, :class=>"btn btn-primary float-right margin-right-10" %>
-					<div class="cl"></div>
-				</div>
-				<div class="cl"></div>
+				<h4 class="form-heading"><%= @user.name %></h4>
 			<% end %>
+			<h6 class="form-heading" style="margin-bottom:10px;">Recent Tweets</h6>
 			
-			<h6 class="form-heading" style="margin-bottom:10px;">Recent Tweets!</h6>
 			<div class="cl" style="border-top:1px solid #4b4b4b;margin-bottom:10px;"></div>
 			
 			<% if @tweets.empty? %>
-				No Tweets found.
+				This user has not started tweeting yet.
 			<% end %>
 			
 			<% @tweets.each do |tweet| %>
@@ -37,7 +30,7 @@
 
 			<div class="cl-10"></div>
 
-			<%= link_to 'Tweet Now', new_tweet_path, :class=>"float-right btn btn-mini" %>
+			<%= link_to 'New Tweet', new_tweet_path, :class=>"float-right" %>
 			
 			<div class="cl-10"></div>
 

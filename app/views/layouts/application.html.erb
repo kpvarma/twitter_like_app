@@ -20,7 +20,7 @@
 			<% if notice %>
 				<div class="container" align="center">
 					<div class="row" align="center">
-						<div style=''>
+						<div style='width:800px;'>
 							<div class="alert alert-success fade in" data-alert="alert">
 				        <a class="close" data-dismiss='alert' href="#">×</a>
 				        <p><%= notice %></p>
@@ -31,6 +31,9 @@
 	    <% end %>
 	
 			<%= yield %>
+			
+			<%= render :partial=>"/layouts/common/recent_users" %>
+			
 		</div>
 		
 		<%= render :partial=>"/layouts/common/footer" %>
