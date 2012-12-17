@@ -1,0 +1,6 @@
+// Show Updated Data
+$('#DIV_POST_TWEET').html("<%= escape_javascript(render(:partial=>"/tweets/ajax_form", :locals=>{:tweet=>Tweet.new})) %>");
+
+if($("#DIV_TWEETS").length > 0){
+	$('#DIV_TWEETS').html("<%= escape_javascript(render(:partial=>"/tweets/index", :locals=>{:tweet=>Tweet.new})) %>");
+}

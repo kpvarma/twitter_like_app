@@ -1,0 +1,30 @@
+<%= simple_form_for(tweet, :remote=>true, :html=>{:style=>"margin-bottom:0px;"} ) do |f| %>
+	
+	<% if tweet.errors.any? %>
+    <div class="alert alert-error fade in">
+			<%= tweet.errors.full_messages.first %>
+			<div class="cl"></div>
+    </div>
+  <% end %>
+
+	<% if @success_message %>
+    <div class="alert alert-success fade in">
+			<%= @success_message %>
+			<div class="cl"></div>
+    </div>
+  <% end %>
+	
+	<div class="float-left">
+		<%= f.input :message, :required => true, :label => false, :as => :text, :placeholder=>"Compose a new Tweet (Maximum 160 characters).", :input_html => { :class => "span9", :rows=>3 }, :error => false %>
+	</div>
+	<div class="float-right">
+		<span class="float-left margin-right-10">Private?</span>
+		<span class="float-right">
+			<%= f.input :private, :as => :boolean, :label => false, :required => false %>
+		</span>
+		<div class="cl"></div>
+		<%= f.submit "Tweet", :class=>"float-right btn btn-primary btn-large", "data-loading-text"=>"Updating ..." %>
+	</div>
+	<div class="cl"></div>
+	
+<% end %>

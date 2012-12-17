@@ -1,0 +1,2 @@
+// Show Updated Data
+$('#DIV_POST_TWEET').html("<%= escape_javascript(render(:partial=>"/tweets/ajax_form", :locals=>{:tweet=>@tweet})) %>");

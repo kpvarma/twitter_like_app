@@ -1,0 +1,26 @@
+<div class="container" align="center">
+	<div class="row">
+		<div class="well" style='max-width:800px;'>
+			<h5 class="form-heading">Retweeted by Me</h5>
+			
+			<% if @retweets.empty? %>
+				You have not retweeted anything yet.
+			<% end %>
+			
+			<% @retweets.each do |retweet| %>
+				<% tweet = retweet.tweet %>
+				<div style="border-bottom:1px solid #c1c1c1;padding-bottom:20px;padding-top:10px;">
+					<div class="float-left margin-right-5 width-5"><img src="http://si0.twimg.com/favicons/favicon.ico"/></div>
+					<div class="float-left width-70" align="left" >
+						<%= link_to "@#{tweet.user.username}: ", user_tweets_path(:username=>tweet.user.username), :class=>"margin-right-10" %> 
+						<span class="margin-right-10"><%= tweet.message %></span>
+						<span class="time-ago">retweeted by you <%= time_ago_in_words(retweet.created_at) %> ago.</span>
+					</div>
+					<%= link_to 'UnTweet', destroy_retweet_path(:id=>retweet.id), confirm: 'Are you sure?', method: :delete, :class=>"btn btn-mini btn-danger float-right" %>
+					<div class="cl"></div>
+			  </div>
+			<% end %>
+			<div class="cl-10"></div>
+		</div>
+	</div>
+</div>

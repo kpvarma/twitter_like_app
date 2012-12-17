@@ -1,0 +1,21 @@
+<div class="container" align="center">
+	<div class="row">
+		<div class="well" style='max-width:800px;'>
+			<h5 class="form-heading">My Followers</h5>
+			
+			<% if @followers.empty? %>
+				Nobody is following you.
+			<% end %>
+			
+			<% @followers.each do |user| %>
+				<div class="width-25 float-left margin-right-10 padding-20">
+					<div class="float-left margin-right-5"><img src="http://si0.twimg.com/favicons/favicon.ico"/></div>
+					<div class="float-left" align="left" ><%= link_to "@#{user.username}", user_tweets_path(:username=>user.username) %></div>
+			    <div class="float-right time-ago" align="right">joined <%= time_ago_in_words(user.created_at) %> ago.</div>
+					<div class="cl"></div>
+			  </div>
+			<% end %>
+			<div class="cl-10"></div>
+		</div>
+	</div>
+</div>
