@@ -14,8 +14,8 @@
 	</div>
 	
 	<div class="form-actions" style="margin:0px; padding:10px 0px;">
-		<%= f.submit "Update Tweet", :class=>"float-right btn btn-primary", "data-loading-text"=>"Updating ..." %>
-		<%= link_to 'Back', tweets_path, :class=>"btn float-right margin-right-10" %>
+		<%= f.submit "Tweet", :class=>"float-right btn btn-primary", "data-loading-text"=>"Updating ..." %>
+		<%= link_to 'Back', user_tweets_path(:username=>current_user.username), :class=>"btn float-right margin-right-10" %>
 	</div>
 	
 <% end %>

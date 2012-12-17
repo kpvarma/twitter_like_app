@@ -3,7 +3,11 @@ class WelcomeController < ApplicationController
   before_filter :set_header_nav
   
   def home
-    @tweets = Tweet.order(:created_at).limit(30).all
+    if signed_in?
+      @tweets = Tweet.where("user_id != #{current_user.id}").order("created_at desc").limit(30).all
+    else
+      @tweets = Tweet.order("created_at desc").limit(30).all
+    end
   end
   
   private

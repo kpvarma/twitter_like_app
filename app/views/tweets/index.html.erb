@@ -1,39 +1,18 @@
+<% if signed_in? %>
+	<div class="container" align="center">
+		<div class="row" align="center">
+			<div id="DIV_POST_TWEET" class="well" style='max-width:800px;margin-top:0px;padding-bottom:0px;'>
+				<%= render :partial=>"/tweets/ajax_form", :locals=>{:tweet=>Tweet.new} %>
+			</div>
+		</div>
+	</div>
+<% end %>
+
 <div class="container" align="center">
 	<div class="row" align="center">
-		<div class="well" style='max-width:800px;margin-top:0px;'>
-			<% if signed_in? %>
-				<h4 class="form-heading">Welcome <%= @user.name %>!</h4>
-			<% else %>
-				<h4 class="form-heading"><%= @user.name %></h4>
-			<% end %>
-			<h6 class="form-heading" style="margin-bottom:10px;">Recent Tweets</h6>
-			
-			<div class="cl" style="border-top:1px solid #4b4b4b;margin-bottom:10px;"></div>
-			
-			<% if @tweets.empty? %>
-				This user has not started tweeting yet.
-			<% end %>
-			
-			<% @tweets.each do |tweet| %>
-			  <div style="border-bottom:1px solid #c1c1c1;padding-bottom:20px;padding-top:10px;">
-					<div class="float-left margin-right-5 width-5"><img src="http://si0.twimg.com/favicons/favicon.ico"/></div>
-					<div class="float-left width-70" align="left" ><%= tweet.message %></div>
-			    <div class="float-right time-ago width-20" align="right"><%= time_ago_in_words(tweet.created_at) %> ago.</div>
-					<% if @user == current_user %>
-						<div class="cl-10"></div>
-						<%= link_to 'Destroy', tweet, confirm: 'Are you sure?', method: :delete, :class=>"btn btn-mini btn-danger float-right" %>
-						<%= link_to 'Edit', edit_tweet_path(tweet), :class=>"btn btn-mini float-right margin-right-5" %>
-					<% end %>
-					<div class="cl"></div>
-			  </div>
-			<% end %>
-
-			<div class="cl-10"></div>
-
-			<%= link_to 'New Tweet', new_tweet_path, :class=>"float-right" %>
-			
-			<div class="cl-10"></div>
-
+		<div id="DIV_TWEETS" class="well" style='max-width:800px;margin-top:0px;'>
+			<%= render :partial=>"index" %>
 		</div>
 	</div>
 </div>
+

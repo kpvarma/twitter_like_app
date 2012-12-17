@@ -8,9 +8,18 @@ class TweetsController < ApplicationController
     @user = User.find_by_username(params[:username])
     
     if @user
-      @tweets = @user.tweets.limit(10)
+      
+      # Query to pull all tweets for current_user, including retweets and order from newest to oldest
+      #sql = "select * from (
+      #    select t.* from tweets as t where user_id = #{@user.id}
+      #    union
+      #    select t.* from tweets as t where t.id in (select tweet_id from retweets where user_id = #{@user.id}))
+      #a order by created_at desc limit 10;"
+      #@tweets = Tweet.find_by_sql(sql)
+      
+      @tweets = @user.tweets.order("created_at desc").limit(30)
       respond_to do |format|
-        format.html # index.html.erb
+        format.html
       end
     else
       render_404
@@ -22,7 +31,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
     end
     
   end
@@ -32,7 +41,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
     end
     
   end
@@ -45,14 +54,24 @@ class TweetsController < ApplicationController
     
     @tweet = Tweet.new(params[:tweet])
     @tweet.user = current_user
-
-    respond_to do |format|
-      if @tweet.save
+    @tweet.valid?
+    
+    if @tweet.errors.blank?
+      @tweet.save
+      @user = current_user
+      @tweets = @user.tweets.order("created_at desc").limit(30)
+      @success_message = "Tweet has been saved Successfully."
+      respond_to do |format|
         format.html { redirect_to user_tweets_path(:username=>current_user.username), notice: 'Tweet was successfully created.' }
-      else
+        format.js {render :create}
+      end
+    else
+      respond_to do |format|
         format.html { render action: "new" }
+        format.js {render :form}
       end
     end
+    
   end
 
   def update
@@ -74,7 +93,7 @@ class TweetsController < ApplicationController
     @tweet.destroy
 
     respond_to do |format|
-      format.html { redirect_to tweets_url }
+      format.html { redirect_to user_tweets_path(:username=>current_user.username) }
     end
   end
   

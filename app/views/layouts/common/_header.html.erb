@@ -14,7 +14,10 @@
            <ul class="nav">
              <li class="<%= @header_nav == "Home" ? "active" : "" %>"><%= link_to "Home", root_path %></li>
 							<% if signed_in? %>
-             		<li class="<%= @header_nav == "Tweets" ? "active" : "" %>"><%= link_to current_user.name, user_tweets_path(:username=>current_user.username)  %></li>
+             		<li class="<%= @header_nav == "Tweets" ? "active" : "" %>"><%= link_to "@#{current_user.username}", user_tweets_path(:username=>current_user.username)  %></li>
+             		<li class="<%= @header_nav == "Friends" ? "active" : "" %>"><%= link_to "My Friends", friends_path  %></li>
+             		<li class="<%= @header_nav == "Followers" ? "active" : "" %>"><%= link_to "My Followers", followers_path  %></li>
+             		<li class="<%= @header_nav == "Retweets" ? "active" : "" %>"><%= link_to "My Retweets", retweets_path  %></li>
              		<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
            		<% else %>
 								<li class="<%= @header_nav == "Sign Up" ? "active" : "" %>"><%= link_to "Sign up", new_user_registration_path %></li>

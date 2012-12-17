@@ -11,7 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121213073521) do
+ActiveRecord::Schema.define(:version => 20121217042453) do
+
+  create_table "followings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "follower_id"
+    t.datetime "subscribed_at"
+  end
+
+  add_index "followings", ["user_id", "follower_id"], :name => "index_followings_on_user_id_and_follower_id"
+
+  create_table "retweets", :force => true do |t|
+    t.integer  "tweet_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+  end
+
+  add_index "retweets", ["user_id", "tweet_id"], :name => "index_retweets_on_user_id_and_tweet_id"
 
   create_table "tweets", :force => true do |t|
     t.integer  "user_id",                                      :null => false
