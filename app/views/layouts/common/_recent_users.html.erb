@@ -3,6 +3,11 @@
 		<div class="well" style='max-width:800px;'>
 			<h5 class="form-heading">Recent Users</h5>
 			<% @recent_users = User.order("created_at desc").limit(10).all %>
+			
+			<% if @recent_users.empty? %>
+				No Users found.
+			<% end %>
+			
 			<% @recent_users.each do |user| %>
 				<div class="width-25 float-left margin-right-10 padding-20">
 					<div class="float-left margin-right-5"><img src="http://si0.twimg.com/favicons/favicon.ico"/></div>
