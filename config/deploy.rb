@@ -65,7 +65,7 @@ namespace :deploy do
   task :copy_database_yml do
     # run "mkdir -p #{shared_path}/config"
     #run "cp -f #{current_path}/config/database.yml.example #{shared_path}/config/database.yml"
-    run "ln -nfs #{shared_path}/config/database.yml #{current_path}/config/database.yml"
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
 
     # run "mkdir -p #{shared_path}/private"
     # run "ln -nfs #{shared_path}/private #{release_path}/private"
