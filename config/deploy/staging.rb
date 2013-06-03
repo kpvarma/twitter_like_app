@@ -12,7 +12,7 @@ set :application, 'twitter_like_app.qwinixtech.com'
 
 set :deploy_to, "#{base_path}/#{app_name}"
 
-set :branch, 'master'
+set :branch, 'qwinix'
 set :port, 1422
 
 set :rails_env, 'staging'
