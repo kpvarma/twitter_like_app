@@ -19,6 +19,11 @@ require 'capistrano/ext/multistage'
 # To namespace cron jobs of this application, not to overlap/overridden by other apps cron jobs
 # set :whenever_identifier, defer { "#{application}_#{stage}" }
 
+set :rvm_ruby_string, 'ruby-1.9.3-p429@twitter_like_app'
+set :rvm_path, "$HOME/.rvm"
+set :rvm_bin_path, "$HOME/.rvm/bin"
+set :rvm_type, :system
+
 set :stages, ["staging", "demo"]
 set :default_stage, "staging"
 
@@ -29,7 +34,7 @@ set :git_enable_submodules, 1
 set :scm, 'git'
 set :user, 'deploy'
 set :repository, 'git@github.com:kpvarma/twitter_like_app.git'
-set :base_path, '/u01/qwinix/apps/twitter_like_app/www'
+set :base_path, '/u01/apps/qwinix/www'
 set :normalize_asset_timestamps, false
 
 set :app_name, 'twitter_like_app'
