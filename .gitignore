@@ -18,3 +18,8 @@ tmp/*
 tmp/**/*
 db/*.sqlite3
 .DS_Store
+
+/tmp/cache/*
+/log/*
+db/*.sqlite3
+config/database.yml

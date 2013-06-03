@@ -1,16 +1,19 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.0'
+gem 'rails', '3.2.13'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+group :staging, :demo, :production do
+  gem 'pg'
+end
 
-#gem 'sqlite3'
-#gem 'mysql2'
-gem 'pg'
-gem 'psych'
+group :development, :test do
+  gem 'sqlite3'
+end
+
+#gem 'psych'
 gem 'devise'
 gem "simple_form"
+gem("thin")
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -27,22 +30,30 @@ end
 gem 'jquery-rails'
 
 group :development, :test do
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  
+  ## Deployment Modules
+  gem "capistrano"
+  gem "capistrano-deepmodules"
+  gem "capistrano_colors"
+  gem "capistrano-ext"
+  gem "capistrano-deploytags"
+  gem "rvm-capistrano"
+  
+  ## Testing Modules
+  gem "capybara"
+  gem "database_cleaner"
+  gem "launchy"
+  gem "rspec-rails"
+  gem "factory_girl_rails"
   gem "faker"
+  
+  ## Others
+  gem "quiet_assets"
+  gem "colorize"
+  gem "pry"
+  
 end
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+group :test do
+  gem "cucumber-rails"
+end
