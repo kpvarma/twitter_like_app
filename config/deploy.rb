@@ -64,8 +64,8 @@ namespace :deploy do
   desc "Symlink shared configs and folders on each release."
   task :copy_database_yml do
     run "mkdir -p #{shared_path}/config"
-    run "cp -f #{release_path}/config/database.yml.example #{shared_path}/config/database.yml"
-    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    run "cp -f #{release_path}/config/database.yml.example #{release_path}/config/database.yml"
+    #run "ln -nfs #{release_path}/config/database.yml #{release_path}/config/database.yml"
 
     # run "mkdir -p #{shared_path}/private"
     # run "ln -nfs #{shared_path}/private #{release_path}/private"
