@@ -41,6 +41,10 @@ set :app_name, 'twitter_like_app'
 set :application, 'twitter_like_app.qwinixtech.com'
 set :shared_children, shared_children + %w{public/uploads}
 
+# http://stackoverflow.com/questions/7863070/capistrano-deploy-host-key-verification-failed
+ssh_options[:forward_agent] = true
+default_run_options[:pty] = true
+
 before "deploy:assets:precompile", "deploy:copy_database_yml"
 
 after 'deploy', 'deploy:migrate'
