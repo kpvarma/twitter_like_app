@@ -46,9 +46,9 @@ ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
 
 before "deploy:assets:precompile", "deploy:copy_database_yml"
-
 after 'deploy', 'deploy:migrate'
 after 'deploy', 'deploy:cleanup'
+
 # after 'deploy', 'cron:update' # To Update cronjob after deploying the code
 # after 'deploy', 'delayed_job:restart' # To Restart delayed_job after deploying the code
 
@@ -63,12 +63,9 @@ namespace :deploy do
 
   desc "Symlink shared configs and folders on each release."
   task :copy_database_yml do
-    # run "mkdir -p #{shared_path}/config"
-    #run "cp -f #{current_path}/config/database.yml.example #{shared_path}/config/database.yml"
+    run "mkdir -p #{shared_path}/config"
+    run "cp -f #{release_path}/config/database.yml.example #{shared_path}/config/database.yml"
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-
-    # run "mkdir -p #{shared_path}/private"
-    # run "ln -nfs #{shared_path}/private #{release_path}/private"
   end
 
   # To reset database connection, while deploying
