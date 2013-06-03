@@ -45,7 +45,7 @@ set :shared_children, shared_children + %w{public/uploads}
 ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
 
-before "deploy:assets:precompile", "deploy:copy_database_yml"
+before "deploy:restart", "deploy:copy_database_yml"
 after 'deploy', 'deploy:migrate'
 after 'deploy', 'deploy:cleanup'
 
