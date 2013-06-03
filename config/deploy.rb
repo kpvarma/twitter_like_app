@@ -66,6 +66,10 @@ namespace :deploy do
     #run "mkdir -p #{shared_path}/config"
     #run "cp -f #{release_path}/config/database.yml.example #{shared_path}/config/database.yml"
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    run "rm -f #{release_path}/config/database.yml.example "
+    run "rm -f #{release_path}/config/database.mysql.yml"
+    run "rm -f #{release_path}/config/database.postgresql.yml"
+    run "rm -f #{release_path}/config/database.sqlite.yml"
   end
 
   # To reset database connection, while deploying
