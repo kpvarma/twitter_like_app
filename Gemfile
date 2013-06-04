@@ -10,6 +10,9 @@ group :development, :test do
   gem 'sqlite3'
 end
 
+# Monitoring
+gem 'newrelic_rpm'
+
 #gem 'psych'
 gem 'devise'
 gem "simple_form"
