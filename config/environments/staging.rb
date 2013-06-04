@@ -30,6 +30,8 @@ Twitter::Application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
+  config.log_path='/u01/logs/qwinix/www/twitter_like_app'
+
   # See everything in the log (default is :info)
   config.log_level = :debug
 

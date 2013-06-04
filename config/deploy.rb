@@ -28,7 +28,7 @@ set :stages, ["staging", "demo"]
 set :default_stage, "staging"
 
 set :use_sudo, false
-set :keep_releases, 10
+set :keep_releases, 5
 set :git_enable_submodules, 1
 
 set :scm, 'git'
